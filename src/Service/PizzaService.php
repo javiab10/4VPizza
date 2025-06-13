@@ -103,7 +103,7 @@ class PizzaService
         foreach ($orderRequest->pizzas_order as $pizzaOrder) {
             $pizzaEntity = $this->pizzaRepository->find($pizzaOrder->pizza_id);
             if (!$pizzaEntity) {
-                return ['code' => 26, 'description' => 'Pizza with id ' . $pizzaOrder->pizza_id . ' not found'];
+                return ['code' => 26, 'description' => 'Pizza con el id ' . $pizzaOrder->pizza_id . ' no encontrada'];
             }
 
             // Crear entidad PizzaOrder y asociar
@@ -166,6 +166,22 @@ class PizzaService
 
         if (empty($order->payment->payment_type) || empty($order->payment->number)) {
             return ['code' => 25, 'description' => 'El tipo de pago y el número de pago son obligatorios'];
+        }
+
+        if (!in_array($order->payment->payment_type, ['credit_card', 'bizum'])) {
+            return ['code' => 27, 'description' => 'El tipo de pago debe ser credit_card o bizum'];
+        }
+
+        if ($order->payment->payment_type === 'credit_card') {
+            if (!preg_match('/^\d{4}-\d{4}-\d{4}-\d{4}$/', $order->payment->number)) {
+                return ['code' => 28, 'description' => 'El número de tarjeta debe tener formato XXXX-XXXX-XXXX-XXXX'];
+            }
+        }
+
+        if ($order->payment->payment_type === 'bizum') {
+            if (!preg_match('/^\d{9}$/', $order->payment->number)) {
+                return ['code' => 29, 'description' => 'El número de Bizum debe tener 9 dígitos'];
+            }
         }
 
         return null;
