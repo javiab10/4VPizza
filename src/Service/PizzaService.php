@@ -30,7 +30,7 @@ class PizzaService
         /** @var Pizza $pizza */
         foreach ($allPizzas as $pizza) {
 
-            //Filtramos por nombre de la pizza
+            //Filtramos por nombre de la pizza con método contains
             if ($title && !str_contains(strtolower($pizza->getTitle()), strtolower($title))) {
                 continue;
             }

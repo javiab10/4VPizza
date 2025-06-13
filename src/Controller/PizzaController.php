@@ -20,8 +20,12 @@ final class PizzaController extends AbstractController
         $title = $request->query->get('title');
         $ingredients = $request->query->get('ingredients');
 
+
+
         $pizzas = $this->pizzaService->getFilteredPizzas($title, $ingredients);
         
         return $this->json($pizzas);
     }
+
+    
 }
