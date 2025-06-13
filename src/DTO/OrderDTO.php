@@ -4,11 +4,11 @@ namespace App\DTO;
 
 class OrderDTO
 {
-    /** @var PizzaOrderInputDto[] */
+    /** @var NewPizzaOrderDTO[] */
     public array $pizzas_order;
 
     public string $delivery_time;
     public string $delivery_address;
 
-    public PaymentDto $payment;
+    public PaymentDTO $payment;
 }
