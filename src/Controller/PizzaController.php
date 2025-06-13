@@ -9,8 +9,8 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/api/pizza', name: 'api_pizza_')]
 final class PizzaController extends AbstractController
 {
-    #[Route('/all', name: 'app_pizza')]
-    public function index(): JsonResponse
+    #[Route('/filteredList', name: 'filtered_list', methods: ['GET'])]
+    public function getFilteredPizzas(): JsonResponse
     {
         return $this->json([
             'message' => 'Welcome to your new controller!',

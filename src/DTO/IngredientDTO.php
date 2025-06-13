@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Dto;
+namespace App\DTO;
 
-class IngredientDto
+class IngredientDTO
 {
     public string $name;
 

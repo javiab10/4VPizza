@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Dto;
+namespace App\DTO;
 
-class PizzaResponseDto
+class PizzaResponseDTO
 {
     public int $id;
     public string $title;
     public string $image;
     public float $price;
     public bool $okCeliacs;
-    /** @var array<int, array{name: string}> */
+
+    /** @var IngredientDto[] */
     public array $ingredients = [];
 
     public function __construct(
