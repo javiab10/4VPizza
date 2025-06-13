@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "43d7c4d4-8a27-443b-bbf9-1c2a9a15afc2",
+		"name": "4VPizza",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39277241"
+	},
+	"item": [
+		{
+			"name": "Pizzas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/pizza/filteredList?title=Barbacoa&ingredients=Barbacoa,Queso",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pizza",
+						"filteredList"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Barbacoa"
+						},
+						{
+							"key": "ingredients",
+							"value": "Barbacoa,Queso"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"pizzas_order\": [\r\n    {\r\n      \"pizza_id\": 1,\r\n      \"quantity\": 1\r\n    },\r\n    {\r\n      \"pizza_id\": 2,\r\n      \"quantity\": 3\r\n    }\r\n  ],\r\n  \"delivery_time\": \"20:15\",\r\n  \"delivery_address\": \"Calle Falsa 123, Madrid\",\r\n  \"payment\": {\r\n    \"payment_type\": \"paypal\",\r\n    \"number\": \"user@example.com\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/pizza/placeOrder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pizza",
+						"placeOrder"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
