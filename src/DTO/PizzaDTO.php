@@ -2,7 +2,7 @@
 
 namespace App\DTO;
 
-class PizzaResponseDTO
+class PizzaDTO
 {
     public int $id;
     public string $title;
